@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pyasx"
+version = "2.1.7"
+description = "Python library to pull data from ASX.com.au"
+authors = ["JohnVonNeumann <18162779+JohnVonNeumann@users.noreply.github.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+requests = "^2.28.1"
+PyYAML = "^6.0"
+python-dateutil = "^2.8.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
