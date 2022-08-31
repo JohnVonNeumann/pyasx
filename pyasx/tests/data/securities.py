@@ -207,6 +207,11 @@ class SecuritiesTest(unittest.TestCase):
         Simple check of pulling live data
         """
 
-        security = pyasx.data.securities.get_security_info('TLSAA')
+        # The functionality for calling individual securities on tickers longer than
+        # 3 has apparently been deprecated, I have not tested with ALL securities
+        # longer than 3 chars, but from the testing I've done, it seems to hold.
+        # If this is true, then perhaps just merging the company and security API
+        # calls might make more sense.
+        security = pyasx.data.securities.get_security_info('TLS')
         self.assertTrue("ticker" in security)
         self.assertTrue(len(security))
