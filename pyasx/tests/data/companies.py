@@ -32,16 +32,19 @@ class CompaniesTest(unittest.TestCase):
 
         self.get_listed_companies_data = [
             # just the first ones from the file to test with
-            [ "MOQ LIMITED", "MOQ", "Software & Services" ],
-            [ "1-PAGE LIMITED", "1PG", "Software & Services" ],
-            [ "1300 SMILES LIMITED", "ONT", "Health Care Equipment & Services" ],
-            [ "1ST GROUP LIMITED", "1ST", "Health Care Equipment & Services" ],
+            # the fields for Pharmaceuticals and Food have been changed to use ampersands
+            # instead of commas due to the way we're doing the mocks, change in the future
+            # probably just read from a series of mock files, would make it cleaner
+            ["14D", "1414 DEGREES LIMITED", "2018-09-12", "Capital Goods", "19592589"],
+            ["1AD", "ADALTA LIMITED", "2016-08-22", "Pharmaceuticals & Biotechnology & Life Sciences", "15709237"],
+            ["1AE", "AURORA ENERGY METALS LIMITED", "2022-05-18", "Materials", "37791912"],
+            ["1AG", "ALTERRA LIMITED", "2008-05-16", "Food & Beverage & Tobacco", "10433288"],
+            ["1MC", "MORELLA CORPORATION LIMITED", "2001-01-08", "Materials", "144141145"]
         ]
 
         # build the mock CSV data based on self.get_listed_companies_data
 
-        for i in range(0, 3):  # header
-            self.get_listed_companies_mock+= "\n"
+        self.get_listed_companies_mock += "\n"
 
         for row in self.get_listed_companies_data:
 
@@ -137,9 +140,11 @@ class CompaniesTest(unittest.TestCase):
             for company in companies:
                 company_data = self.get_listed_companies_data[i]
 
-                self.assertEqual(company["name"], company_data[0])
-                self.assertEqual(company["ticker"], company_data[1])
-                self.assertEqual(company["gics_industry"], company_data[2])
+                self.assertEqual(company["ticker"], company_data[0])
+                self.assertEqual(company["name"], company_data[1])
+                self.assertEqual(company["listing_date"], company_data[2])
+                self.assertEqual(company["gics_industry"], company_data[3])
+                self.assertEqual(company["market_cap"], company_data[4])
 
                 i += 1
 

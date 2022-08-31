@@ -48,21 +48,22 @@ def get_listed_companies():
 
         # rewind the temp stream and convert it to an iterator for csv.reader below
         temp_stream.seek(0)
-        temp_iter = iter(temp_stream.readline, '');
+        temp_iter = iter(temp_stream.readline, '')
 
-        # skip the first 3 rows of the CSV as they are header rows
-        for i in range(0, 3):
-            next(temp_iter)
+        # skip the first row of the CSV as it is a header row
+        next(temp_iter)
 
         # read the stream back in & parse out the company details from each row
         for row in csv.reader(temp_iter):
 
-            name, ticker, gics = row
+            ticker, name, listing_date, gics, market_cap = row
 
             all_listed_companies.append({
-                'name': name,
                 'ticker': ticker,
-                'gics_industry': gics
+                'name': name,
+                'listing_date': listing_date,
+                'gics_industry': gics,
+                'market_cap': market_cap
             })
 
     return all_listed_companies
