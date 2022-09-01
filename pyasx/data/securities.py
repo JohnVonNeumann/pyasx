@@ -140,7 +140,7 @@ def _normalise_security_info(raw):
     return security_info
 
 
-def get_security_info(ticker):
+def get_security_info(ticker: str) -> dict[str, str]:
     """
     Pull pricing information on the security with the given ticker symbol. This
     can be for any type of listed security, such as company stock, bonds, ETFs
@@ -149,7 +149,8 @@ def get_security_info(ticker):
     :raises pyasx.data.LookupError:
     """
 
-    assert(len(ticker) >= 3)
+    if not 2 < len(ticker) < 7:
+        raise ValueError(f"Invalid ticker length of {len(ticker)} for {ticker}")
 
     # build the endpoint to pull security info
     endpoint_pattern = pyasx.config.get('asx_single_json')
