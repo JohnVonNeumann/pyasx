@@ -215,3 +215,18 @@ class SecuritiesTest(unittest.TestCase):
         security = pyasx.data.securities.get_security_info('TLS')
         self.assertTrue("ticker" in security)
         self.assertTrue(len(security))
+
+    def test_get_security_info_with_incorrect_ticker_length_raises_exception(self):
+        """
+        The Security Info API will not find any data for any ticker that is not between
+        2 and 7 chars long.
+        """
+
+        with self.assertRaises(ValueError):
+            pyasx.data.companies.get_company_info(ticker="A")
+
+        with self.assertRaises(ValueError):
+            pyasx.data.companies.get_company_info(ticker="AA")
+
+        with self.assertRaises(ValueError):
+            pyasx.data.companies.get_company_info(ticker="AAAAAAA")
