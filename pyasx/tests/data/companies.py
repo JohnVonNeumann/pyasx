@@ -251,3 +251,24 @@ class CompaniesTest(unittest.TestCase):
 
         announcements = pyasx.data.companies.get_company_announcements('CBA')
         self.assertTrue(len(announcements))
+
+    def test_get_company_info_with_incorrect_ticker_length_raises_exception(self):
+        """
+        The Company Info API will not find any data for any ticker that is not 3
+        chars long.
+        """
+
+        with self.assertRaises(ValueError):
+            pyasx.data.companies.get_company_info(ticker="A")
+
+        with self.assertRaises(ValueError):
+            pyasx.data.companies.get_company_info(ticker="AA")
+
+        with self.assertRaises(ValueError):
+            pyasx.data.companies.get_company_info(ticker="AAAA")
+
+        with self.assertRaises(ValueError):
+            pyasx.data.companies.get_company_info(ticker="AAAAA")
+
+        with self.assertRaises(ValueError):
+            pyasx.data.companies.get_company_info(ticker="AAAAAA")

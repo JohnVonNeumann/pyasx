@@ -138,10 +138,10 @@ def _normalise_company_info(raw):
     return company_info
 
 
-def get_company_info(ticker):
+def get_company_info(ticker: str) -> dict[str, str]:
     """
     Pull information on the company with the given ticker symbol. This also
-    includes all of the pricing information returned by
+    includes all the pricing information returned by
     `pyasx.data.securities.get_security_info()`.
 
     This will only work for a company, it will not return information on, ETFs,
@@ -152,7 +152,8 @@ def get_company_info(ticker):
     :raises pyasx.data.LookupError:
     """
 
-    assert(len(ticker) >= 3)
+    if len(ticker) != 3:
+        raise ValueError(f"Invalid ticker length of {len(ticker)} for {ticker}")
 
     # build the endpoint to pull company info
     endpoint_pattern = pyasx.config.get('asx_company_json')
