@@ -12,6 +12,7 @@ PyYAML = "^6.0"
 python-dateutil = "^2.8.2"
 
 [tool.poetry.dev-dependencies]
+bandit = "^1.7.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
