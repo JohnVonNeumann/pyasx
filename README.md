@@ -279,6 +279,11 @@ The unit tests can be run by executing the test.py file, like so;
 
     python3 tests.py
 
+## Development Tasks
+
+Run Bandit
+
+   poetry run bandit -c pyproject.toml -r pyasx
 
 ## Changelog
 
