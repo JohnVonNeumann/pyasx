@@ -15,9 +15,26 @@ asx_company_json: https://www.asx.com.au/asx/1/company/%s?fields=primary_share,l
 asx_single_json: https://www.asx.com.au/asx/1/share/%s # %s = ticker
   # OLD; http://data.asx.com.au/data/1/share/%s
 
-# Endpoint to pull annoucements
+# Endpoint to pull announcements
 asx_announcements_json: https://www.asx.com.au/asx/1/company/%s/announcements?count=20&market_sensitive=true
     # %s = ticker
 
 # Endpoint for pulling historical ASX stock prices
+# TODO: Remove, data hasn't been updated since 2018
 floatau_historical_csv: http://float.com.au/download/%s.csv?format=stockeasy  # %s = ticker
+
+# Endpoint for general market updates at different levels of granularity TODO: IMPLEMENT
+# Parameter (days) must be one of (1, 5, 30, 90, 180, 365)"
+market_updates: https://asx.api.markitdigital.com/asx-research/1.0/home/sectors?days=%s&height=0&width=0 # %s = number of days
+
+# Warrants TODO: IMPLEMENT
+warrants_by_company: https://asx.api.markitdigital.com/asx-research/1.0/derivatives/equity/stocks/TLS/warrants?classification=investment&includeFilterOptions=true
+
+# Tonne of APIs available on here TODO: IMPLEMENT
+random: https://asx.markitdigital.com/
+
+# LEPOs TORESS TODO: IMPLEMENT
+lepos_toress: https://asx.api.markitdigital.com/asx-research/1.0/derivatives/equity/stocks/VCX/lepo-toress?all=Call&expiryDates[]=null&showOpenInterestOnly=false&showTheoreticalPricesOnly=false&styles=all
+
+# options TODO: IMPLEMENT
+options_by_company: https://asx.api.markitdigital.com/asx-research/1.0/derivatives/equity/TLS/options/expiry-groups?callsPuts=all&expiryDates[]=2022-09-15&showOpenInterestOnly=false&showTheoreticalPricesOnly=false&styles=all&includeLepoToressOptions=false
