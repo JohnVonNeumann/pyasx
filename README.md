@@ -275,9 +275,9 @@ etc.
 
 ## Unit tests
 
-The unit tests can be run by executing the test.py file, like so;
+The unit tests can be run by executing `Pytest`;
 
-    python3 tests.py
+    poetry run pytest
 
 ## Development Tasks
 
