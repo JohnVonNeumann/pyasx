@@ -223,10 +223,10 @@ class SecuritiesTest(unittest.TestCase):
         """
 
         with self.assertRaises(ValueError):
-            pyasx.data.companies.get_company_info(ticker="A")
+            pyasx.data.securities.get_security_info(ticker="A")
 
         with self.assertRaises(ValueError):
-            pyasx.data.companies.get_company_info(ticker="AA")
+            pyasx.data.securities.get_security_info(ticker="AA")
 
         with self.assertRaises(ValueError):
-            pyasx.data.companies.get_company_info(ticker="AAAAAAA")
+            pyasx.data.securities.get_security_info(ticker="AAAAAAA")
