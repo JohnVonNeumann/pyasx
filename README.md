@@ -6,6 +6,8 @@
 Python library to pull ASX stock information via the undocumented API used on
 [www.ASX.com.au](https://www.asx.com.au).
 
+[https://pyasx.readthedocs.io/en/latest/](https://pyasx.readthedocs.io/en/latest/)
+
 Main features are;
 
  - Pulling the full list of companies & securities listed on the ASX
