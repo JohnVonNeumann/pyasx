@@ -11,11 +11,18 @@ class ISIN(object):
     """
     Represents an ISIN code.
 
-    The structure of an ISIN is composed of three components:
+    An ISIN code is an International Securities Identification Number.
+    It is used to identify a financial Security.
 
-        1. A two-letter country code
+    The structure of an ISIN is made up of three components:
+
+        1. An ISO 3166-1 alpha-2 two character code for the issuing country
         2. A nine-character alphanumeric security identifier
         3. A single check digit.
+
+    Further Information:
+
+        https://en.wikipedia.org/wiki/International_Securities_Identification_Number
     """
     def __init__(self, *, isin: str = None):
         """
