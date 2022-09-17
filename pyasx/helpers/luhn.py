@@ -8,6 +8,9 @@ class Luhn(object):
     def __repr__(self) -> str:
         return f'Luhn(checksum={self._checksum})'
 
+    def __str__(self) -> str:
+        return f'Luhn=10300000068413'
+
     def _get_check_digit(self) -> int:
         print(self._checksum)
         check_digit: int = int(self._checksum[-1])
