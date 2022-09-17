@@ -19,5 +19,3 @@ class Luhn(object):
     def transpose_isin_to_luhn_checksum(*, isin: str = None) -> str:
         country_code = isin[0:2]
         return country_code
-
-        raise NotImplementedError
