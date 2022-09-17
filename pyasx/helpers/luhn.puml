@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+' The issue that I'm facing atm is that I want to segregate
+' the Luhn class and the ISIN class, as really there's nothing
+' that links them other than Luhn checksums being the underlying
+' validation method. I realised the design error as it was clear
+' that the ISIN contains a 2 alpha character country code that
+' needs to be translated into digits prior to being put into a luhn
+' validator. It is clear now that a staticmethod can be used to
+' provide helper methods for *format*_to_luhn_checksum.
+
+' Purpose of the luhn class is to provide the ability to accept
+' luhn checksums and validate them.
+
+class Luhn {
+- str _checksum
+- int _check_digit
+- bool _valid
+
++ void __init__(str checksum)
++ void compute_check_digit()
+
++ str static transpose_isin_to_luhn_checksum(str isin)
+
+}
+
+@enduml
