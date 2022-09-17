@@ -12,14 +12,12 @@ class Luhn(object):
         return f'Luhn=10300000068413'
 
     def _get_check_digit(self) -> int:
-        print(self._checksum)
         check_digit: int = int(self._checksum[-1])
-        print(check_digit)
         return check_digit
 
     @staticmethod
     def transpose_isin_to_luhn_checksum(*, isin: str = None) -> str:
-        country_code = isin[0:1]
+        country_code = isin[0:2]
         return country_code
 
         raise NotImplementedError
