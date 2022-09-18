@@ -94,19 +94,3 @@ class ISIN(object):
         security_identifier: str = self._isin[2:11]
         assert security_identifier.isalnum()
         return security_identifier
-
-    # def _compute_check(self) -> str:
-    #     """
-    #     The check is performed using the Luhn algorithm
-    #     https://en.wikipedia.org/wiki/Luhn_algorithm
-    #
-    #     # TODO: add ability to compute the check, will be available after
-    #     Returns:
-    #         str
-    #     Raises
-    #         NotImplementedError
-    #     """
-    #
-    #     for character in list(self._country_code):
-    #         value = ord(character)
-    #         print(value)
