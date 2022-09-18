@@ -16,11 +16,15 @@ class Luhn(object):
         return check_digit
 
     @staticmethod
-    def transpose_isin_to_luhn_checksum(*, isin: str = None) -> list[int]:
+    def transpose_isin_to_luhn_checksum(*, isin: str = None) -> str:
         country_code: str = isin[0:2]
-        converted_checksum: list[int] = []
+        converted_checksum: list[str] = []
         for char in country_code:
             ascii_code: int = ord(char) - 55
-            converted_checksum.append(ascii_code)
+            converted_checksum.append(str(ascii_code))
 
-        return converted_checksum
+        converted_checksum.append(isin[2:])
+
+        luhn_checksum = ''.join(converted_checksum)
+
+        return luhn_checksum
