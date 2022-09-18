@@ -19,5 +19,5 @@ def test_checksum_valid() -> None:
 
 
 def test_transpose_isin_to_luhn_checksum_correct():
-    checksum = luhn.Luhn.transpose_isin_to_luhn_checksum(isin='AU0000068413')
-    assert checksum == 'AU'
+    checksum: list[int] = luhn.Luhn.transpose_isin_to_luhn_checksum(isin='AU0000068413')
+    assert checksum == [10, 30]
