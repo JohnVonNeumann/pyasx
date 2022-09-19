@@ -10,7 +10,7 @@ class Luhn(object):
         return f'Luhn(checksum={self._checksum})'
 
     def __str__(self) -> str:
-        return f'Luhn=10300000068413'
+        return f'Luhn={self._checksum}'
 
     def _get_check_digit(self) -> int:
         check_digit: int = int(self._checksum[-1])
