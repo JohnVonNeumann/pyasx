@@ -28,6 +28,10 @@ class Luhn(object):
     def payload(self) -> str:
         return self._payload
 
+    @property
+    def is_valid(self) -> bool:
+        return self._valid
+
     @staticmethod
     def transpose_isin_to_luhn_checksum(*, isin: str = None) -> str:
         """

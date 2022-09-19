@@ -13,9 +13,10 @@ def test_str() -> None:
     assert str(luhn_cs) == 'Luhn=10300000068413'
 
 
-def test_checksum_valid() -> None:
-    checksum: str
-    pass
+def test_checksum_invalid() -> None:
+    checksum: str = '10300000068419'
+    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
+    assert luhn_cs.is_valid is False
 
 
 def test_get_payload():
