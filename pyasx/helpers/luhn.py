@@ -17,6 +17,16 @@ class Luhn(object):
 
     @staticmethod
     def transpose_isin_to_luhn_checksum(*, isin: str = None) -> str:
+        """
+        Accepts an ISIN as input and produces a Luhn checksum with the 2 alpha
+        country code transposed to valid ASCII characters.
+
+        Args:
+            isin (str): A single ISIN code.
+
+        Returns:
+            str: An unvalidated Luhn checksum
+        """
         country_code: str = isin[0:2]
         converted_checksum: list[str] = []
         for char in country_code:
