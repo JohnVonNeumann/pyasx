@@ -11,18 +11,24 @@ class ISIN(object):
     """
     Represents an ISIN code.
 
-    The structure of an ISIN is composed of three components:
+    An ISIN code is an International Securities Identification Number.
+    It is used to identify a financial Security.
 
-        1. A two-letter country code
+    The structure of an ISIN is made up of three components:
+
+        1. An ISO 3166-1 alpha-2 two character code for the issuing country
         2. A nine-character alphanumeric security identifier
         3. A single check digit.
+
+    Further Information:
+
+        https://en.wikipedia.org/wiki/International_Securities_Identification_Number
     """
     def __init__(self, *, isin: str = None):
         """
 
         Args:
-            isin: str
-                An ISIN code.
+            isin (str): An ISIN code.
 
         Raises:
             ValueError: On ISIN inputs that are not 12 characters long.
@@ -87,19 +93,3 @@ class ISIN(object):
         security_identifier: str = self._isin[2:11]
         assert security_identifier.isalnum()
         return security_identifier
-
-    # def _compute_check(self) -> str:
-    #     """
-    #     The check is performed using the Luhn algorithm
-    #     https://en.wikipedia.org/wiki/Luhn_algorithm
-    #
-    #     # TODO: add ability to compute the check, will be available after
-    #     Returns:
-    #         str
-    #     Raises
-    #         NotImplementedError
-    #     """
-    #
-    #     for character in list(self._country_code):
-    #         value = ord(character)
-    #         print(value)
