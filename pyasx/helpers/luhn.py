@@ -21,6 +21,10 @@ class Luhn(object):
         return payload
 
     @property
+    def check_digit(self) -> int:
+        return self._check_digit
+
+    @property
     def payload(self) -> str:
         return self._payload
 
