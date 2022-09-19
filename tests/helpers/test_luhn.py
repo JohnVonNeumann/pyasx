@@ -18,6 +18,12 @@ def test_checksum_valid() -> None:
     pass
 
 
+def test_get_payload():
+    checksum: str = '10300000068413'
+    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
+    assert luhn_cs.payload == '1030000006841'
+
+
 def test_transpose_isin_to_luhn_checksum_correct():
     checksum: str = luhn.Luhn.transpose_isin_to_luhn_checksum(isin='AU0000068413')
     assert checksum == '10300000068413'
