@@ -31,6 +31,12 @@ def test_get_check_digit():
     assert luhn_cs.check_digit == 3
 
 
+def test_validate():
+    checksum: str = '10300000068413'
+    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
+    assert luhn_cs.validate() is True
+
+
 def test_transpose_isin_to_luhn_checksum_correct():
     checksum: str = luhn.Luhn.transpose_isin_to_luhn_checksum(isin='AU0000068413')
     assert checksum == '10300000068413'

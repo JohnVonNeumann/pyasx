@@ -20,6 +20,19 @@ class Luhn(object):
         payload: str = self._checksum[:-1]
         return payload
 
+    def _compute_check_digit(self):
+        digits = list(map(int, self._payload))
+        odd_sum = sum(digits[-2::-2])
+        even_sum = sum([sum(divmod(2 * d, 10)) for d in digits[-1::-2]])
+        return 10 - ((odd_sum + even_sum) % 10)
+
+    def validate(self) -> bool:
+        computed_check_digit: int = self._compute_check_digit()
+        if computed_check_digit == self._check_digit:
+            return True
+        else:
+            return False
+
     @property
     def check_digit(self) -> int:
         return self._check_digit
