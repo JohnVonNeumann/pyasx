@@ -28,8 +28,7 @@ class ISIN(object):
         """
 
         Args:
-            isin: str
-                An ISIN code.
+            isin (str): An ISIN code.
 
         Raises:
             ValueError: On ISIN inputs that are not 12 characters long.
