@@ -5,6 +5,7 @@ codes at a basic level.
 Reference on the format of valid ISINs:
     https://www.isin.org/isin-format/
 """
+from pyasx.helpers.luhn import Luhn
 
 
 class ISIN(object):
@@ -93,3 +94,14 @@ class ISIN(object):
         security_identifier: str = self._isin[2:11]
         assert security_identifier.isalnum()
         return security_identifier
+
+    def validate(self) -> bool:
+        """
+        Execute the Luhn algorithm and verify the validity of the ISIN.
+
+        Returns:
+            bool: Whether the ISIN is a valid Luhn checksum or not.
+        """
+        luhn_checksum: str = Luhn.transpose_isin_to_luhn_checksum(isin=self._isin)
+        luhn: Luhn = Luhn(checksum=luhn_checksum)
+        return luhn.validate()
