@@ -27,3 +27,11 @@ class ISINTestCase(unittest.TestCase):
     def test_isin_print_representation(self):
         isin = ISIN(isin='AU0000068413')
         self.assertEqual(str(isin), 'ISIN=AU0000068413')
+
+    def test_isin_successful_validation(self):
+        isin = ISIN(isin='AU0000068413')
+        assert isin.validate() is True
+
+    def test_isin_failed_validation(self):
+        isin = ISIN(isin='AU0000068418')
+        assert isin.validate() is False
