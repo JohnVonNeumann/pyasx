@@ -1,42 +1,45 @@
-from pyasx.helpers import luhn
+import pytest
+
+from pyasx.helpers.luhn import  Luhn
 
 
-def test_repr() -> None:
+@pytest.fixture
+def valid_luhn_checksum():
     checksum: str = '10300000068413'
-    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
-    assert repr(luhn_cs) == 'Luhn(checksum=10300000068413)'
+    luhn: Luhn = Luhn(checksum=checksum)
+    return luhn
 
-
-def test_str() -> None:
-    checksum: str = '10300000068413'
-    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
-    assert str(luhn_cs) == 'Luhn=10300000068413'
-
-
-def test_checksum_invalid() -> None:
+@pytest.fixture
+def invalid_luhn_checksum():
     checksum: str = '10300000068419'
-    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
-    assert luhn_cs.is_valid is False
+    luhn: Luhn = Luhn(checksum=checksum)
+    return luhn
 
 
-def test_get_payload():
-    checksum: str = '10300000068413'
-    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
-    assert luhn_cs.payload == '1030000006841'
+def test_repr(valid_luhn_checksum) -> None:
+    assert repr(valid_luhn_checksum) == 'Luhn(checksum=10300000068413)'
 
 
-def test_get_check_digit():
-    checksum: str = '10300000068413'
-    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
-    assert luhn_cs.check_digit == 3
+def test_str(valid_luhn_checksum) -> None:
+    assert str(valid_luhn_checksum) == 'Luhn=10300000068413'
 
 
-def test_validate():
-    checksum: str = '10300000068413'
-    luhn_cs: luhn.Luhn = luhn.Luhn(checksum=checksum)
-    assert luhn_cs.validate() is True
+def test_checksum_invalid(invalid_luhn_checksum) -> None:
+    assert invalid_luhn_checksum.is_valid is False
+
+
+def test_get_payload(valid_luhn_checksum):
+    assert valid_luhn_checksum.payload == '1030000006841'
+
+
+def test_get_check_digit(valid_luhn_checksum):
+    assert valid_luhn_checksum.check_digit == 3
+
+
+def test_validate(valid_luhn_checksum):
+    assert valid_luhn_checksum.validate() is True
 
 
 def test_transpose_isin_to_luhn_checksum_correct():
-    checksum: str = luhn.Luhn.transpose_isin_to_luhn_checksum(isin='AU0000068413')
+    checksum: str = Luhn.transpose_isin_to_luhn_checksum(isin='AU0000068413')
     assert checksum == '10300000068413'
