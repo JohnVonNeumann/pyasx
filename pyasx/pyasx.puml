@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Security --* ISIN
+ISIN --* Luhn
+
+class Security {
+    - string _name
+    - ISIN _isin
+
+    __properties__
+
+    + string name
+    + string isin
+
+}
+
+class ISIN {}
+
+class Luhn {
+- str _checksum
+- int _check_digit
+- bool _valid
+
++ void __init__(str checksum)
++ void compute_check_digit()
+
++ str static transpose_isin_to_luhn_checksum(str isin)
+
+}
+
+
+@enduml
