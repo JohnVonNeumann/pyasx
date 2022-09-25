@@ -5,13 +5,17 @@ Security --* ISIN
 ISIN --* Luhn
 
 class Security {
-    - string _name
+    - string _security_type
     - ISIN _isin
+    - string _ticker
+    - string _company_name
 
     __properties__
 
     + string name
     + string isin
+    + string ticker
+    + string company_name
 
 }
 
