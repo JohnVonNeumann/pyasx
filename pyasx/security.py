@@ -1,6 +1,16 @@
+"""
+The security.py module contains the Security class, which models an ASX
+specific financial security.
+"""
+
 from .isin import ISIN
 
 class Security:
+    """
+    Represents an ASX Security.
+
+    A security is a tradable financial asset.
+    """
 
     def __init__(self, *,  security_type: str, isin: ISIN, ticker: str, company_name: str):
         self._security_type: str = security_type
