@@ -31,3 +31,25 @@ def test_security_ticker(valid_security):
 
 def test_security_company_name(valid_security):
     assert valid_security.company_name == 'TEST SECURITY'
+
+
+def test_security_invalid_ticker_length():
+    with pytest.raises(ValueError):
+        Security(
+            security_type='TEST ORDINARY SECURITY',
+            isin=ISIN(
+                isin='AU000000TES7'
+            ),
+            ticker='TES1234',
+            company_name='TEST SECURITY'
+        )
+
+    with pytest.raises(ValueError):
+        Security(
+            security_type='TEST ORDINARY SECURITY',
+            isin=ISIN(
+                isin='AU000000TES7'
+            ),
+            ticker='TE',
+            company_name='TEST SECURITY'
+        )

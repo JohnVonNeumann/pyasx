@@ -8,6 +8,10 @@ class Security:
         self._ticker: str = ticker
         self._company_name: str = company_name
 
+        ticker_length = len(ticker)
+        if not 3 <= ticker_length <= 6:
+            raise ValueError(f'Ticker codes must be minimum 3 and maximum 6 characters, not {ticker_length}')
+
     @property
     def security_type(self) -> str:
         return self._security_type
