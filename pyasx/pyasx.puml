@@ -2,6 +2,7 @@
 'https://plantuml.com/class-diagram
 
 Security --* ISIN
+Security --* Ticker
 ISIN --* Luhn
 
 class Security {
@@ -20,6 +21,20 @@ class Security {
 }
 
 class ISIN {}
+
+class Ticker {
+    - string _ticker
+    - string _ticker_type
+    - int _ticker_length
+
+    - string _process_ticker_type()
+
+    __properties__
+
+    + string ticker
+    + string ticker_type
+    + int ticker_length
+}
 
 class Luhn {
 - str _checksum
