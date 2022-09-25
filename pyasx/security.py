@@ -1,4 +1,4 @@
-from isin import ISIN
+from .isin import ISIN
 
 class Security:
 
