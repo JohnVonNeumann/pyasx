@@ -13,15 +13,19 @@ class Ticker:
         self._ticker_length: int = len(ticker)
         self._ticker_type: str = self._process_ticker_type()
 
-        ticker_length: int = len(ticker)
+    @property
+    def ticker(self) -> str:
+        return self._ticker
+
+    @ticker.setter
+    def ticker(self, value: str):
+        ticker_length: int = len(value)
         if not 3 <= ticker_length <= 6:
             raise InvalidTickerLengthException(
                 f'Tickers must be minimum 3 and maximum 6 characters, not {ticker_length}'
             )
-
-    @property
-    def ticker(self) -> str:
-        return self._ticker
+        else:
+            self._ticker = value
 
     @property
     def ticker_type(self) -> str:
