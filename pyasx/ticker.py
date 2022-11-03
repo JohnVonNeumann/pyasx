@@ -40,7 +40,7 @@ class Ticker:
             case 6:
                 raise NotImplementedError
             case _:
-                raise ValueError
+                raise InvalidTickerLengthException
 
 
 class TickerType(Enum):
