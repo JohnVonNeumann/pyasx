@@ -20,9 +20,9 @@ def test_ticker_type(valid_ticker):
     assert valid_ticker.ticker_type == TickerType.ORDINARY_SHARE
 
 
-def test_ticker_throws_exception(valid_ticker):
-    # Catching the invalid length in multiple spots
+@pytest.mark.parametrize("ticker", ["1", "12", "1234567"])
+def test_ticker_throws_exception(ticker):
     with pytest.raises(InvalidTickerLengthException):
         Ticker(
-            ticker='BADLENGTH'
+            ticker=ticker
         )
