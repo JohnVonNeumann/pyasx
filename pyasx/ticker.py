@@ -1,3 +1,9 @@
+"""
+The security.py module contains the Ticker class, along with the TickerType
+Enum, which model a Stock Ticker Symbol, which is used to represent an ID
+of a stock listed on the ASX.
+"""
+
 from enum import Enum
 
 from pyasx.exceptions import InvalidTickerLengthException
@@ -5,7 +11,8 @@ from pyasx.exceptions import InvalidTickerLengthException
 
 class Ticker:
     """
-    Insert
+    A stock ticker (symbol) is a unique series of letters assigned to a security for trading purposes.
+    ASX tickers can be from 3 to 6 characters, with differing lengths for differing securities.
     """
 
     def __init__(self, *, ticker: str):
