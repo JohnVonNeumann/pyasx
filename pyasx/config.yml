@@ -4,7 +4,7 @@
 asx_companies_csv: https://asx.api.markitdigital.com/asx-research/1.0/companies/directory/file
 
 # Endpoint providing XLS spreadsheet of all listed securities and their tickers
-asx_securities_tsv: https://www.asx.com.au/programs/ISIN.xls
+asx_securities_tsv: https://www2.asx.com.au/content/dam/asx/issuers/ISIN.xls
     # NOTE the extension is xls but the file is actually tab separated
 
 # Endpoint to pull individual companies data

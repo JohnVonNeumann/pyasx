@@ -41,22 +41,26 @@ def get_listed_securities():
         raise pyasx.data.LookupError("Failed to lookup listed securities; %s" % str(ex))
 
     # parse the CSV result, piping it to a temp file to make the process more memory efficient
-    with tempfile.NamedTemporaryFile("w+") as temp_stream:
 
-        # pipe the CSV data to a temp file
-        for block in response.iter_content(1024, True):
-            temp_stream.write(block.decode('unicode_escape'))
+    with open("test.xls", 'wb') as f:
+        f.write(response.content)
 
-        # rewind the temp stream and convert it to an iterator for csv.reader below
-        temp_stream.seek(0)
-        temp_iter = iter(temp_stream.readline, '');
-
-        # skip the first 5 rows of the CSV as they are header rows
-        for i in range(0, 5):
-            next(temp_iter)
+    # with tempfile.NamedTemporaryFile("w+") as temp_stream:
+    #
+    #     # pipe the CSV data to a temp file
+    #     for block in response.iter_content(1024, True):
+    #         temp_stream.write(block.decode('unicode_escape'))
+    #
+    #     # rewind the temp stream and convert it to an iterator for csv.reader below
+    #     temp_stream.seek(0)
+    #     temp_iter = iter(temp_stream.readline, '');
+    #
+    #     # skip the first 5 rows of the CSV as they are header rows
+    #     for i in range(0, 5):
+    #         next(temp_iter)
 
         # read the stream back in & parse out the company details from each row
-        for row in csv.reader(temp_iter, dialect="excel-tab"):
+        for row in csv.reader(f, dialect="excel"):
 
             ticker, name, type, isin = row
 
